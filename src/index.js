@@ -1,6 +1,8 @@
-const express = require("express");
+const express = require('express');
 const app=express();
-const { PORT } = require("./config");
+const { ServerConfig,Logger } = require('./config');
+const {}=require('./controllers');
+const apiRoutes= require('./routes');
 
 app.get('/',(req,res)=>{
   res.send('Hello World');
@@ -9,6 +11,7 @@ app.get('/',(req,res)=>{
 app.get('/ani',(req,res)=>{
   res.send('hello purbasha');
 })
-app.listen(PORT, () => {
-  console.log(`Sucessfully start the server on port: ${PORT}`);
+app.use('/api',apiRoutes);
+app.listen(ServerConfig.PORT, () => {
+  console.log(`Sucessfully start the server on port: ${ServerConfig.PORT}`);
 });
